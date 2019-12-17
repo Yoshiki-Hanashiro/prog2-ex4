@@ -16,3 +16,9 @@ class Maze:
     int getCode(Vector2 pos) - その座標のマップ情報　
     void load(String filePath) - ファイルから読み込む
 
+プレイヤークラス：
+class Player:
+    Vector2 currentPos; 現在位置
+    int numSteps; 歩数
+
+    void move() - 任意の方向に１歩移動して、現在位置を更新する
