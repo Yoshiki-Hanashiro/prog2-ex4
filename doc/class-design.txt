@@ -1,0 +1,18 @@
+クラス設計仮案
+
+迷路クラス：
+class Vector2:
+    public int x
+    public int y
+
+class Maze:
+    Vector2 mazeSize;　迷路のサイズ
+    int[][] mazeData;　マップ情報　0:空白　1:壁
+    Vector2 startPos;　初期位置
+    Vector2 goalPos;　ゴール位置
+
+    bool canMove(Vector2 dist) - 引数で渡された座標が進めるかどうかを返す
+    bool isGoal(Vector2 pos) - 引数の座標がゴールかどうか
+    int getCode(Vector2 pos) - その座標のマップ情報　
+    void load(String filePath) - ファイルから読み込む
+
