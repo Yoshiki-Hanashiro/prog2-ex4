@@ -15,6 +15,7 @@ class Maze:
     bool isGoal(Vector2 pos) - 引数の座標がゴールかどうか
     int getCode(Vector2 pos) - その座標のマップ情報　
     void load(String filePath) - ファイルから読み込む
+    Vector2 getStartPos() - 初期位置を返す
 
 プレイヤークラス：
 class Player:
