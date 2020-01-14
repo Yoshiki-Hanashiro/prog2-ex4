@@ -14,27 +14,39 @@ public class Maze {
             line = in.readLine();
             String[] temp = line.split(" ");
             startPos = new Vector2(Integer.parseInt(temp[0]), Integer.parseInt(temp[1]));
+
             line = in.readLine();
             temp = line.split(" ");
             mazeData = new int[Integer.parseInt(temp[0])][Integer.parseInt(temp[1])];
 
             //迷路読む
-        } catch (FileNotFoundException e){
-            e.printStackTrace();
-            System.exit(-1); // 0 以外は異常終了
+            for (int i=0;i<mazeData.length;i++){
+                line = in.readLine();
+                for (int ii=0;ii<mazeData[i].length;ii++){
+                    char codeChar = line.charAt(ii);
+                    if (codeChar == '#'){
+                        mazeData[i][ii] = 1;
+                    }else if (codeChar == ' '){
+                        mazeData[i][ii] = 0;
+                    }else if (codeChar == 's'){
+                        //startPos?
+                    }else if (codeChar == 'G'){
+                        goalPos = new Vector2(ii, i);
+                    }
+                }
+            }
         } catch (IOException e){
             e.printStackTrace();
-            System.exit(-1);
         }
     }
     public boolean canMove(Vector2 dist){
-        return mazeData[dist.x][dist.y] == 0;
+        return getCode(dist) == 0;
     }
     public boolean isGoal(Vector2 pos){
         return goalPos.equal(pos);
     }
     public int getCode(Vector2 pos){
-        return mazeData[pos.x][pos.y];
+        return mazeData[pos.y][pos.x];
     }
     public Vector2 getStartPos(){
         return startPos;
